@@ -1,0 +1,3 @@
+## Help
+
+<?@exec {} mkql -h ?>
