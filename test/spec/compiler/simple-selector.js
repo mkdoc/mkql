@@ -1,7 +1,7 @@
 var expect = require('chai').expect
   , ast = require('mkast')
   , Node = ast.Node
-  , compile = require('../../../lib/compiler');
+  , compile = require('../../../index').compile;
 
 describe('compiler:', function() {
   
