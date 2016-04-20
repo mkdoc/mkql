@@ -15,6 +15,8 @@ describe('query:', function() {
       .to.have.length(1);
     expect(result[0].type).to.eql(Node.PARAGRAPH);
 
+    //console.error(Node.serialize(result[0]))
+
     expect(result[0].firstChild.type).to.eql(Node.LINK);
     expect(result[0].firstChild.destination).to.eql('http://example.com');
 
