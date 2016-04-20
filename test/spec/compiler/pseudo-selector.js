@@ -1,0 +1,53 @@
+var expect = require('chai').expect
+  , ast = require('mkast')
+  , Node = ast.Node
+  , compile = require('../../../lib/compiler');
+
+describe('compiler:', function() {
+  
+  it('should compile pseudo selector (:first-child)', function(done) {
+    var selector = 'p:first-child'
+      , result = compile(selector);
+    expect(result).to.be.an('object');
+    expect(result.selectors).to.be.an('array')
+      .to.have.length(1);
+    var selected = result.selectors[0];
+    expect(selected.tag).to.eql('p');
+    expect(selected.type).to.eql(Node.PARAGRAPH);
+
+    expect(selected.pseudo).to.be.an('object');
+    expect(selected.pseudo.literal).to.eql(':first-child');
+    done();
+  });
+
+  it('should compile pseudo selector (:last-child)', function(done) {
+    var selector = 'p:last-child'
+      , result = compile(selector);
+    expect(result).to.be.an('object');
+    expect(result.selectors).to.be.an('array')
+      .to.have.length(1);
+    var selected = result.selectors[0];
+    expect(selected.tag).to.eql('p');
+    expect(selected.type).to.eql(Node.PARAGRAPH);
+
+    expect(selected.pseudo).to.be.an('object');
+    expect(selected.pseudo.literal).to.eql(':last-child');
+    done();
+  });
+
+  it('should compile pseudo selector (:nth-child)', function(done) {
+    var selector = 'p:nth-child(3n+1)'
+      , result = compile(selector);
+    expect(result).to.be.an('object');
+    expect(result.selectors).to.be.an('array')
+      .to.have.length(1);
+    var selected = result.selectors[0];
+    expect(selected.tag).to.eql('p');
+    expect(selected.type).to.eql(Node.PARAGRAPH);
+    expect(selected.pseudo).to.be.an('object');
+    expect(selected.pseudo.literal).to.eql(':nth-child(3n+1)');
+    expect(selected.pseudo.expr).to.eql('3n+1');
+    done();
+  });
+
+});
