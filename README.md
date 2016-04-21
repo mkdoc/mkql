@@ -26,6 +26,7 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
   - [Descendant Operator](#descendant-operator)
   - [Attribute Selectors](#attribute-selectors)
     - [Literal Attribute](#literal-attribute)
+    - [Content Attribute](#content-attribute)
     - [Anchor Attributes](#anchor-attributes)
     - [Image Attributes](#image-attributes)
     - [Code Block Attributes](#code-block-attributes)
@@ -125,6 +126,32 @@ Nodes that have a `literal` property include:
 * `text`: text
 * `html`: html_block
 * `inline`: html_inline
+
+#### Content Attribute
+
+The `content` attribute is available for containers that can contain `text` nodes. This is a more powerful (but slower) method to match on the text content.
+
+Consider the document:
+
+```markdown
+Paragraph with some *emphasis* and *italic*.
+```
+
+If we select on the `literal` attribute we would get a `text` node, for example:
+
+```css
+p [literal^=emph]
+```
+
+Results in the child `text` node with a literal value of `emphasis`. Often we may wish to match the parent element instead to do so use the `content` attribute:
+
+```css
+p [content^=emph]
+```
+
+Which returns the `emph` node containing the `text` node matched with the previous `literal` query.
+
+The value for the `content` attribute is all the child text nodes concatenated together which is why it will always be less performant than matching on the `literal`.
 
 #### Anchor Attributes
 

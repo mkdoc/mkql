@@ -118,4 +118,28 @@ describe('query:', function() {
     done();
   });
 
+  it('should query with attribute selector (block content)', function(done) {
+    var selector = 'p[content*=emph and italic]'
+      , result = query('Paragraph *emph* and *italic*', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    expect(result[0].type).to.eql(Node.PARAGRAPH);
+
+    done();
+  });
+
+  it('should query with attribute selector (inline content)', function(done) {
+    var selector = 'p em[content^=em]'
+      , result = query('Paragraph *emph* and *italic*', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    expect(result[0].type).to.eql(Node.EMPH);
+
+    done();
+  });
+
 });
