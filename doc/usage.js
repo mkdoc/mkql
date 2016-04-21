@@ -1,8 +1,7 @@
-var highlight = require('../index')
-  , ast = require('mkast')
-  , tfm = require('mktransform');
+var ql = require('../index')
+  , ast = require('mkast');
 
-ast.src('```javascript\nvar foo = "bar"\n```')
-  .pipe(tfm(highlight))
+ast.src('Paragraph with some *emph*, **strong** and `code`')
+  .pipe(ql('p text'))
   .pipe(ast.stringify({indent: 2}))
   .pipe(process.stdout);

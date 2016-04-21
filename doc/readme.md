@@ -2,9 +2,9 @@
 
 <? @include readme/badges.md ?>
 
-> Select nodes in the tree
+> Query a document tree with selectors
 
-Select nodes in a markdown abstract syntax tree using CSS-style selectors.
+Extracts nodes using a selector syntax that is a subset of the CSS selectors specification.
 
 <? @include {=readme} install.md ?>
 
@@ -12,7 +12,7 @@ Select nodes in a markdown abstract syntax tree using CSS-style selectors.
 <!-- @toc -->
 ***
 
-<? @include {=readme} usage.md example.md help.md ?>
+<? @include {=readme} usage.md example.md guide.md help.md ?>
 
 <? @exec mkapi index.js --title=API --level=2 ?>
 <? @include {=readme} license.md links.md ?>

@@ -17,10 +17,15 @@
     "ast",
     "transform",
     "stream",
-    "syntax",
-    "highlight",
-    "code"
+    "selector",
+    "query",
+    "html",
+    "css"
   ],
+  "dependencies": {
+    "mkast": "~1.2.10",
+    "through3": "~1.1.6"
+  },
   "devDependencies": {
     "chai": "~3.5.0",
     "coveralls": "~2.11.8",

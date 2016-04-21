@@ -4,9 +4,9 @@
 [![npm version](http://img.shields.io/npm/v/mkql.svg?v=3)](https://npmjs.org/package/mkql)
 [![Coverage Status](https://coveralls.io/repos/mkdoc/mkql/badge.svg?branch=master&service=github&v=3)](https://coveralls.io/github/mkdoc/mkql?branch=master)
 
-> Select nodes in the tree
+> Query a document tree with selectors
 
-Select nodes in a markdown abstract syntax tree using CSS-style selectors.
+Extracts nodes using a selector syntax that is a subset of the CSS selectors specification.
 
 ## Install
 
@@ -21,48 +21,98 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 - [Install](#install)
 - [Usage](#usage)
 - [Example](#example)
+- [Selectors](#selectors)
+  - [Tag Selectors](#tag-selectors)
+  - [Descendant Operator](#descendant-operator)
+  - [Attribute Selectors](#attribute-selectors)
+  - [Pseudo Selectors](#pseudo-selectors)
 - [Help](#help)
 - [API](#api)
   - [compile](#compile)
   - [query](#query)
   - [ql](#ql)
+    - [Options](#options)
 - [License](#license)
 
 ---
 
 ## Usage
 
-Pass the transform implementation to [mktransform][]:
+Pass selectors when creating the stream:
 
 ```javascript
-var highlight = require('mkql')
-  , ast = require('mkast')
-  , tfm = require('mktransform');
+var ql = require('mkql')
+  , ast = require('mkast');
 
-ast.src('```javascript\nvar foo = "bar"\n```')
-  .pipe(tfm(highlight))
+ast.src('Paragraph with some *emph*, **strong** and `code`')
+  .pipe(ql('p text'))
   .pipe(ast.stringify({indent: 2}))
   .pipe(process.stdout);
 ```
 
 ## Example
 
-To highlight code blocks in a document with ANSI escape sequences:
+## Selectors
 
-```shell
-mkcat README.md | mkhigh -o esc | mkout
+Implemented selectors work identically to their CSS counterparts and in some cases extensions have been added specific to markdown tree nodes.
+
+### Tag Selectors
+
+Tags are based on the equivalent HTML element name, so to select a node of `code_block` type use `pre`.
+
+The map of standard HTML tag names to node types is:
+
+* p: Node.PARAGRAPH
+* ul: Node.LIST
+* ol: Node.LIST
+* li: Node.ITEM
+* h1: Node.HEADING
+* h2: Node.HEADING
+* h3: Node.HEADING
+* h4: Node.HEADING
+* h5: Node.HEADING
+* h6: Node.HEADING
+* pre: Node.CODE_BLOCK
+* blockquote: Node.BLOCK_QUOTE
+* hr: Node.THEMATIC_BREAK
+* code: Node.CODE
+* em: Node.EMPH
+* strong: Node.STRONG
+* a: Node.LINK
+* br: Node.LINEBREAK
+* img: Node.IMAGE
+
+Extensions for markdown specific types:
+
+* nl: Node.SOFTBREAK
+* text: Node.TEXT
+* html: Node.HTML_BLOCK
+* inline: Node.HTML_INLINE
+
+### Descendant Operator
+
+By default a selector such as `ol li` will also find grandchildren for nested lists use the direct descendant operator when you just want direct descendants:
+
+```css
+ol > li
 ```
 
-To highlight code blocks for a standalone HTML page:
+### Attribute Selectors
 
-```shell
-mkcat README.md | mkhigh | mkpage | mkhtml > README.html
+You can match on attributes in the same way as usual:
+
+```css
+a[href^=http://domain.com]
 ```
 
-Number lines in the code blocks:
+All the CSS attribute operators are supported, see [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors "Attribute Selectors (MDN)") for more information.
 
-```shell
-mkcat README.md | mkhigh --lines | mkpage | mkhtml > README.html
+### Pseudo Selectors
+
+The pseudo selectors `:first-child` and `:last-child` are supported.
+
+```css
+p a:first-child
 ```
 
 ## Help

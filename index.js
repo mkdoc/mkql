@@ -77,11 +77,18 @@ function query(markdown, source) {
 function ql(opts, cb) {
 
   var ast = require('mkast')
+    , query
     , Query = require('./query');
+
+  if(typeof opts === 'string') {
+    query = compile(opts); 
+  }
 
   opts = opts || {};
   opts.input = opts.input;
   opts.output = opts.output;
+
+  opts.query = opts.query || query;
 
   var stream = new Query(opts);
 
