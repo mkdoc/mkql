@@ -16,10 +16,9 @@ describe('compiler:', function() {
     expect(selected.tag).to.eql('p');
     expect(selected.type).to.eql(Node.PARAGRAPH);
 
-    expect(selected.selectors).to.be.an('array')
-      .to.have.length(1);
+    expect(selected.selector).to.be.an('object')
 
-    var child = selected.selectors[0];
+    var child = selected.selector;
     expect(child.tag).to.eql('em');
     expect(child.type).to.eql(Node.EMPH);
 

@@ -247,4 +247,47 @@ describe('query:', function() {
     done();
   });
 
+  it('should query with simple selector (ul li)', function(done) {
+    var selector = 'ul li'
+      , result = query('* foo\n\n1. bar', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.ITEM);
+    expect(result[0].listType).to.eql('bullet');
+    expect(result[0].firstChild.firstChild.literal).to.eql('foo');
+    done();
+  });
+
+  it('should query with simple selector (ol li)', function(done) {
+    var selector = 'ol li'
+      , result = query('* foo\n\n1. bar', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.ITEM);
+    expect(result[0].listType).to.eql('ordered');
+    expect(result[0].firstChild.firstChild.literal).to.eql('bar');
+    done();
+  });
+
+  it('should query with simple selector (p text)', function(done) {
+    var selector = 'p text'
+      , result = query('Paragraph', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.TEXT);
+    expect(result[0].literal).to.eql('Paragraph');
+    done();
+  });
+
+  it('should query with simple selector (p text) - mixed', function(done) {
+    var selector = 'p text'
+      , result = query('Paragraph *emph*, **strong** and `code`', selector);
+    console.error(Node.serialize(result[0]))
+    //expect(result).to.be.an('array')
+      //.to.have.length(1);
+    //expect(result[0].type).to.eql(Node.TEXT);
+    //expect(result[0].literal).to.eql('Paragraph');
+    done();
+  });
+
 });
