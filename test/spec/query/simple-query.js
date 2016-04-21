@@ -261,8 +261,10 @@ describe('query:', function() {
   it('should query with simple selector (ol li)', function(done) {
     var selector = 'ol li'
       , result = query('* foo\n\n1. bar', selector);
+
     expect(result).to.be.an('array')
       .to.have.length(1);
+
     expect(result[0].type).to.eql(Node.ITEM);
     expect(result[0].listType).to.eql('ordered');
     expect(result[0].firstChild.firstChild.literal).to.eql('bar');
@@ -282,12 +284,24 @@ describe('query:', function() {
   it('should query with simple selector (p text) - mixed', function(done) {
     var selector = 'p text'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
-    console.error(Node.serialize(result[0]))
-    console.error(result.length);
-    //expect(result).to.be.an('array')
-      //.to.have.length(1);
-    //expect(result[0].type).to.eql(Node.TEXT);
-    //expect(result[0].literal).to.eql('Paragraph');
+    expect(result.length).to.eql(5);
+
+    expect(result[0].literal).to.eql('Paragraph ');
+    expect(result[1].literal).to.eql('emph');
+    expect(result[2].literal).to.eql(', ');
+    expect(result[3].literal).to.eql('strong');
+    expect(result[4].literal).to.eql(' and ');
+    done();
+  });
+
+  it('should query with descendant selector (p > text) - mixed', function(done) {
+    var selector = 'p > text'
+      , result = query('Paragraph *emph*, **strong** and `code`', selector);
+    expect(result.length).to.eql(3);
+
+    expect(result[0].literal).to.eql('Paragraph ');
+    expect(result[1].literal).to.eql(', ');
+    expect(result[2].literal).to.eql(' and ');
     done();
   });
 
