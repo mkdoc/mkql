@@ -53,7 +53,6 @@ function query(markdown, source) {
   if(source.selectors) {
     for(i = 0;i < source.selectors.length;i++) {
       source.selectors[i].exec(nodes, list);
-      //list = list.concat(); 
     }
   }
 
