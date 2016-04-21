@@ -284,7 +284,6 @@ describe('query:', function() {
     var selector = 'p text'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
     expect(result.length).to.eql(5);
-
     expect(result[0].literal).to.eql('Paragraph ');
     expect(result[1].literal).to.eql('emph');
     expect(result[2].literal).to.eql(', ');
