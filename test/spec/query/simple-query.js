@@ -158,8 +158,8 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (p emph)', function(done) {
-    var selector = 'p emph'
+  it('should query with simple selector (p em)', function(done) {
+    var selector = 'p em'
       , result = query('Some *foo* and *bar*\n\n', selector);
     expect(result).to.be.an('array')
       .to.have.length(2);
@@ -167,6 +167,45 @@ describe('query:', function() {
     expect(result[0].firstChild.literal).to.eql('foo');
     expect(result[1].type).to.eql(Node.EMPH);
     expect(result[1].firstChild.literal).to.eql('bar');
+    done();
+  });
+
+  it('should query with simple selector (p strong)', function(done) {
+    var selector = 'p strong'
+      , result = query('Some **foo** and **bar**\n\n', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(2);
+    expect(result[0].type).to.eql(Node.STRONG);
+    expect(result[0].firstChild.literal).to.eql('foo');
+    expect(result[1].type).to.eql(Node.STRONG);
+    expect(result[1].firstChild.literal).to.eql('bar');
+    done();
+  });
+
+  it('should query with simple selector (blockquote)', function(done) {
+    var selector = 'blockquote'
+      , result = query('Para 1\n\n> Quotation', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.BLOCK_QUOTE);
+    done();
+  });
+
+  it('should query with simple selector (hr)', function(done) {
+    var selector = 'hr'
+      , result = query('Para 1\n\n---\n\nPara 1', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.THEMATIC_BREAK);
+    done();
+  });
+
+  it('should query with simple selector (img)', function(done) {
+    var selector = 'p img'
+      , result = query('Para 1 ![image](/image.jpg)\n\n', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.IMAGE);
     done();
   });
 
