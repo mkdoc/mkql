@@ -1,6 +1,6 @@
 {
   "name": "mkql",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Query language for markdown documents",
   "author": "muji",
   "license": "MIT",
