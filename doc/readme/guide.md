@@ -8,32 +8,27 @@ Tags are based on the equivalent HTML element name, so to select a node of `code
 
 The map of standard HTML tag names to node types is:
 
-* p: Node.PARAGRAPH
-* ul: Node.LIST
-* ol: Node.LIST
-* li: Node.ITEM
-* h1: Node.HEADING
-* h2: Node.HEADING
-* h3: Node.HEADING
-* h4: Node.HEADING
-* h5: Node.HEADING
-* h6: Node.HEADING
-* pre: Node.CODE_BLOCK
-* blockquote: Node.BLOCK_QUOTE
-* hr: Node.THEMATIC_BREAK
-* code: Node.CODE
-* em: Node.EMPH
-* strong: Node.STRONG
-* a: Node.LINK
-* br: Node.LINEBREAK
-* img: Node.IMAGE
+* `p`: PARAGRAPH
+* `ul`: LIST
+* `ol`: LIST
+* `li`: ITEM
+* `h1-h6`: HEADING 
+* `pre`: CODE_BLOCK
+* `blockquote`: BLOCK_QUOTE
+* `hr`: THEMATIC_BREAK
+* `code`: CODE
+* `em`: EMPH
+* `strong`: STRONG
+* `a`: LINK
+* `br`: LINEBREAK
+* `img`: IMAGE
 
 Extensions for markdown specific types:
 
-* nl: Node.SOFTBREAK
-* text: Node.TEXT
-* html: Node.HTML_BLOCK
-* inline: Node.HTML_INLINE
+* `nl`: SOFTBREAK
+* `text`: TEXT
+* `html`: HTML_BLOCK
+* `inline`: HTML_INLINE
 
 ### Descendant Operator
 
