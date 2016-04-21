@@ -137,8 +137,6 @@ describe('query:', function() {
       var selector = 'ul li:nth-child(-n+3)'
         , result = query(
             '* 1\n* 2\n* 3\n* 4\n* 5\n* 6\n* 7\n* 8\n\n', selector);
-      //console.error(Node.serialize(result[0]))
-      //console.error(Node.serialize(result[1]))
       expect(result).to.be.an('array')
         .to.have.length(3);
       expect(result[0].type).to.eql(Node.ITEM);
