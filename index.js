@@ -60,9 +60,7 @@ function query(markdown, source) {
 }
 
 /**
- *  Generate a document containing a table of contents list.
- *
- *  See [Toc](#toc-1) for more available options.
+ *  Run a queries on an input stream.
  *
  *  @function ql
  *  @param {Object} [opts] processing options.

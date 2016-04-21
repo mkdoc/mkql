@@ -162,9 +162,7 @@ Returns Array list of matched nodes.
 ql([opts][, cb])
 ```
 
-Generate a document containing a table of contents list.
-
-See [Toc](#toc-1) for more available options.
+Run a queries on an input stream.
 
 Returns an output stream.
 
