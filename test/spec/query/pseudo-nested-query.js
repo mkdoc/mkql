@@ -12,8 +12,6 @@ describe('query:', function() {
     expect(result).to.be.an('array')
       .to.have.length(1);
 
-    //console.error(Node.serialize(result[0]))
-  
     expect(result[0].type).to.eql(Node.EMPH);
     expect(result[0].firstChild.type).to.eql(Node.TEXT);
     expect(result[0].firstChild.literal).to.eql('emph');

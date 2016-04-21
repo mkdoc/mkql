@@ -33,8 +33,6 @@ describe('query:', function() {
     expect(result).to.be.an('array')
       .to.have.length(2);
 
-    //console.error(Node.serialize(result[0]))
-
     expect(result[0].type).to.eql(Node.HEADING);
     expect(result[0].firstChild.literal).to.eql('Heading 1');
     expect(result[1].type).to.eql(Node.HEADING);
@@ -50,8 +48,6 @@ describe('query:', function() {
     expect(result).to.be.an('array')
       .to.have.length(1);
 
-    //console.error(Node.serialize(result[0]))
-
     expect(result[0].type).to.eql(Node.HEADING);
     expect(result[0].firstChild.literal).to.eql('Heading 2');
 
@@ -64,8 +60,6 @@ describe('query:', function() {
           '# Heading 1\n\n### Heading 3\n\n# Heading 1\n\n', selector);
     expect(result).to.be.an('array')
       .to.have.length(1);
-
-    //console.error(Node.serialize(result[0]))
 
     expect(result[0].type).to.eql(Node.HEADING);
     expect(result[0].firstChild.literal).to.eql('Heading 3');
@@ -80,8 +74,6 @@ describe('query:', function() {
     expect(result).to.be.an('array')
       .to.have.length(1);
 
-    //console.error(Node.serialize(result[0]))
-
     expect(result[0].type).to.eql(Node.HEADING);
     expect(result[0].firstChild.literal).to.eql('Heading 4');
 
@@ -94,8 +86,6 @@ describe('query:', function() {
           '# Heading 1\n\n##### Heading 5\n\n# Heading 1\n\n', selector);
     expect(result).to.be.an('array')
       .to.have.length(1);
-
-    //console.error(Node.serialize(result[0]))
 
     expect(result[0].type).to.eql(Node.HEADING);
     expect(result[0].firstChild.literal).to.eql('Heading 5');
@@ -110,8 +100,6 @@ describe('query:', function() {
     expect(result).to.be.an('array')
       .to.have.length(1);
 
-    //console.error(Node.serialize(result[0]))
-
     expect(result[0].type).to.eql(Node.HEADING);
     expect(result[0].firstChild.literal).to.eql('Heading 6');
 
@@ -124,10 +112,7 @@ describe('query:', function() {
     expect(result).to.be.an('array')
       .to.have.length(1);
 
-    //console.error(Node.serialize(result[0]))
-
     expect(result[0].type).to.eql(Node.SOFTBREAK);
-    //expect(result[0].firstChild.literal).to.eql('Heading 6');
 
     done();
   });
@@ -138,10 +123,7 @@ describe('query:', function() {
     expect(result).to.be.an('array')
       .to.have.length(1);
 
-    //console.error(Node.serialize(result[0]))
-
     expect(result[0].type).to.eql(Node.LINEBREAK);
-    //expect(result[0].firstChild.literal).to.eql('Heading 6');
 
     done();
   });
@@ -302,7 +284,6 @@ describe('query:', function() {
     var selector = 'p text'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
     expect(result.length).to.eql(5);
-
     expect(result[0].literal).to.eql('Paragraph ');
     expect(result[1].literal).to.eql('emph');
     expect(result[2].literal).to.eql(', ');
