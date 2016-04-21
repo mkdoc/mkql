@@ -60,7 +60,52 @@ function query(markdown, source) {
   return list;
 }
 
-module.exports = {
-  compile: compile,
-  query: query
-};
+/**
+ *  Generate a document containing a table of contents list.
+ *
+ *  See [Toc](#toc-1) for more available options.
+ *
+ *  @function ql
+ *  @param {Object} [opts] processing options.
+ *  @param {Function} [cb] callback function.
+ *
+ *  @option {Readable} [input] input stream.
+ *  @option {Writable} [output] output stream.
+ *
+ *  @returns an output stream.
+ */
+function ql(opts, cb) {
+
+  var ast = require('mkast')
+    , Query = require('./query');
+
+  opts = opts || {};
+  opts.input = opts.input;
+  opts.output = opts.output;
+
+  var stream = new Query(opts);
+
+  if(!opts.input || !opts.output) {
+    return stream; 
+  }
+
+  // pass through stream, we append or prepend
+  ast.parser(opts.input)
+    .pipe(stream)
+    .pipe(ast.stringify())
+    .pipe(opts.output);
+
+  if(cb) {
+    opts.output
+      .once('error', cb)
+      .once('finish', cb);
+  }
+
+  return opts.output;
+}
+
+
+ql.compile = compile;
+ql.query = query;
+
+module.exports = ql;
