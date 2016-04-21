@@ -30,9 +30,9 @@ Extensions for markdown specific types:
 * `html`: html_block
 * `inline`: html_inline
 
-### Descendant Operator
+### Child Combinator
 
-By default a selector such as `ol li` will also find grandchildren for nested lists use the direct descendant operator when you just want direct descendants:
+By default a selector such as `ol li` will find all descendants use the child combinator operator when you just want direct children:
 
 ```css
 ol > li
