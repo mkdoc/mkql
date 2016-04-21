@@ -283,6 +283,7 @@ describe('query:', function() {
     var selector = 'p text'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
     console.error(Node.serialize(result[0]))
+    console.error(result.length);
     //expect(result).to.be.an('array')
       //.to.have.length(1);
     //expect(result[0].type).to.eql(Node.TEXT);
