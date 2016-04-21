@@ -157,4 +157,28 @@ describe('query:', function() {
     done();
   });
 
+  it('should query with attribute selector (bullet)', function(done) {
+    var selector = 'ul[bullet=*]'
+      , result = query('+ foo\n\n* bar\n\n- qux\n\n', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    expect(result[0].type).to.eql(Node.LIST);
+    expect(result[0]._listData.bulletChar).to.eql('*');
+    done();
+  });
+
+  it('should query with attribute selector (delimiter)', function(done) {
+    var selector = 'ol[delimiter=)]'
+      , result = query('1. foo\n\n2) bar\n\n1. qux\n\n', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    expect(result[0].type).to.eql(Node.LIST);
+    expect(result[0].listDelimiter).to.eql(')');
+    done();
+  });
+
 });

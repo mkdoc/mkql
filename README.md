@@ -30,6 +30,7 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
     - [Anchor Attributes](#anchor-attributes)
     - [Image Attributes](#image-attributes)
     - [Code Block Attributes](#code-block-attributes)
+    - [List Attributes](#list-attributes)
   - [Pseudo Selectors](#pseudo-selectors)
 - [Help](#help)
 - [API](#api)
@@ -184,6 +185,30 @@ Code blocks support the `info` and `fenced` attributes.
 ```css
 pre[info^=javascript]
 pre[fenced]
+```
+
+#### List Attributes
+
+The `list` and `item` types (`ul`, `ol` and `li`) support the `bullet` and `delimiter` attributes.
+
+So you can select elements depending upon the bullet character used (unordered lists) or the delimiter (ordered lists). For the `bullet` attribute valid values are `+`, `*` and `-`; for the `delimiter` attribute valid values are `.` or `)`.
+
+This selector will match the lists declared using the `*` character:
+
+```css
+ul[bullet=*]
+```
+
+Or for all ordered lists declared using the `1)` style:
+
+```css
+ol[delimiter=)]
+```
+
+Use a child selector to get list items:
+
+```css
+ul li[bullet=+]
 ```
 
 ### Pseudo Selectors
