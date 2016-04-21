@@ -7,7 +7,7 @@ describe('query:', function() {
   
   it('should query with nested pseudo-selector', function(done) {
     var selector = 'p em:first-child'
-      , result = query('Some *emph* and more *emphasis*', selector);
+      , result = query('*emph* and more *emphasis*', selector);
 
     expect(result).to.be.an('array')
       .to.have.length(1);

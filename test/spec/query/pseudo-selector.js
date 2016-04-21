@@ -36,8 +36,8 @@ describe('query:', function() {
 
     expect(result).to.be.an('array')
       .to.have.length(1);
-    expect(result[0].type).to.eql(Node.TEXT);
-    expect(result[0].literal).to.eql('Para 1');
+    expect(result[0].type).to.eql(Node.PARAGRAPH);
+    expect(result[0].firstChild.literal).to.eql('Para 1');
 
     done();
   });
@@ -48,8 +48,8 @@ describe('query:', function() {
           'Para 1\n\nPara 2', selector);
     expect(result).to.be.an('array')
       .to.have.length(1);
-    expect(result[0].type).to.eql(Node.TEXT);
-    expect(result[0].literal).to.eql('Para 2');
+    expect(result[0].type).to.eql(Node.PARAGRAPH);
+    expect(result[0].firstChild.literal).to.eql('Para 2');
     done();
   });
 
