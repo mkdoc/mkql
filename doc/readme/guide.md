@@ -4,31 +4,31 @@ Implemented selectors work identically to their CSS counterparts and in some cas
 
 ### Tag Selectors
 
-Tags are based on the equivalent HTML element name, so to select a node of `code_block` type use `pre`.
+Tags are based on the equivalent HTML element name, so to select a node of `paragraph` type use `p`.
 
 The map of standard HTML tag names to node types is:
 
-* `p`: PARAGRAPH
-* `ul`: LIST
-* `ol`: LIST
-* `li`: ITEM
-* `h1-h6`: HEADING 
-* `pre`: CODE_BLOCK
-* `blockquote`: BLOCK_QUOTE
-* `hr`: THEMATIC_BREAK
-* `code`: CODE
-* `em`: EMPH
-* `strong`: STRONG
-* `a`: LINK
-* `br`: LINEBREAK
-* `img`: IMAGE
+* `p`: paragraph
+* `ul`: list
+* `ol`: list
+* `li`: item
+* `h1-h6`: heading 
+* `pre`: code_block
+* `blockquote`: block_quote
+* `hr`: thematic_break
+* `code`: code
+* `em`: emph
+* `strong`: strong
+* `a`: link
+* `br`: linebreak
+* `img`: image
 
 Extensions for markdown specific types:
 
-* `nl`: SOFTBREAK
-* `text`: TEXT
-* `html`: HTML_BLOCK
-* `inline`: HTML_INLINE
+* `nl`: softbreak
+* `text`: text
+* `html`: html_block
+* `inline`: html_inline
 
 ### Descendant Operator
 
