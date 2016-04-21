@@ -129,7 +129,7 @@ The `list` and `item` types (`ul`, `ol` and `li`) support the `bullet` and `deli
 
 So you can select elements depending upon the bullet character used (unordered lists) or the delimiter (ordered lists). For the `bullet` attribute valid values are `+`, `*` and `-`; for the `delimiter` attribute valid values are `.` or `)`.
 
-This selector will match the lists declared using the `*` character:
+This selector will match lists declared using the `*` character:
 
 ```css
 ul[bullet=*]
