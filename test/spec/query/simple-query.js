@@ -191,6 +191,24 @@ describe('query:', function() {
     done();
   });
 
+  it('should query with simple selector (pre) + fenced', function(done) {
+    var selector = 'pre'
+      , result = query('```\ncode\n```\n\nParagraph\n', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.CODE_BLOCK);
+    done();
+  });
+
+  it('should query with simple selector (pre) + indented', function(done) {
+    var selector = 'pre'
+      , result = query('    code\n\nParagraph\n', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.CODE_BLOCK);
+    done();
+  });
+
   it('should query with simple selector (hr)', function(done) {
     var selector = 'hr'
       , result = query('Para 1\n\n---\n\nPara 1', selector);
@@ -206,6 +224,26 @@ describe('query:', function() {
     expect(result).to.be.an('array')
       .to.have.length(1);
     expect(result[0].type).to.eql(Node.IMAGE);
+    done();
+  });
+
+  it('should query with simple selector (ul)', function(done) {
+    var selector = 'ul'
+      , result = query('* foo\n\n1. bar', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.LIST);
+    expect(result[0].listType).to.eql('bullet');
+    done();
+  });
+
+  it('should query with simple selector (ol)', function(done) {
+    var selector = 'ol'
+      , result = query('* foo\n\n1. bar', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.LIST);
+    expect(result[0].listType).to.eql('ordered');
     done();
   });
 
