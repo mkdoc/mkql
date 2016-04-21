@@ -111,6 +111,12 @@ a[href^=http://domain.com]
 
 See [attribute selectors (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) for more information on the available operators.
 
+The operator `=~` (not to be confused with `~=`) is a non-standard operator that may be used to match by regular expression pattern:
+
+```css
+img[src=~\.(png|jpg)$]
+```
+
 #### Literal Attribute
 
 For all nodes that have a `literal` property you may match on the attribute.

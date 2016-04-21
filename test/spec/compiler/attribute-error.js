@@ -25,5 +25,15 @@ describe('compiler:', function() {
     done();
   });
   
+  it('should error with bad regexp pattern', function(done) {
+    var selector = 'a[content=~+]'
+    function fn() {
+      compile(selector);
+    }
+
+    expect(fn).throws(/bad regular expression pattern/i);
+    done();
+  });
+
 
 });
