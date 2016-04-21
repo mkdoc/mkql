@@ -52,6 +52,10 @@ ast.src('Paragraph with some *emph*, **strong** and `code`')
 
 ## Example
 
+```shell
+mkcat README.md | mkql 'p, ul, pre[info^=javascript]' | mkout
+```
+
 ## Selectors
 
 Implemented selectors work identically to their CSS counterparts and in some cases extensions have been added specific to markdown tree nodes.
