@@ -57,4 +57,44 @@ describe('query:', function() {
     done();
   });
 
+  it('should query with attribute selector (title)', function(done) {
+    var selector = 'p img[title=example title]'
+      , result = query(
+          'A fixture ![example](http://example.com "example title") website, '
+          + '![foo](http://foo.com "foo title")', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    expect(result[0].type).to.eql(Node.IMAGE);
+    expect(result[0].destination).to.eql('http://example.com');
+    expect(result[0].title).to.eql('example title');
+
+    // should have child text node
+    expect(result[0].firstChild.type).to.eql(Node.TEXT);
+    expect(result[0].firstChild.literal).to.eql('example');
+
+    done();
+  });
+
+  it('should query with attribute selector (src)', function(done) {
+    var selector = 'p img[src=http://example.com]'
+      , result = query(
+          'A fixture ![example](http://example.com "example title") website, '
+          + '![foo](http://foo.com "foo title")', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    expect(result[0].type).to.eql(Node.IMAGE);
+    expect(result[0].destination).to.eql('http://example.com');
+    expect(result[0].title).to.eql('example title');
+
+    // should have child text node
+    expect(result[0].firstChild.type).to.eql(Node.TEXT);
+    expect(result[0].firstChild.literal).to.eql('example');
+
+    done();
+  });
+
 });

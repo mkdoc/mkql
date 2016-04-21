@@ -117,4 +117,32 @@ describe('query:', function() {
 
     done();
   });
+
+  it('should query with simple selector - softbreak (nl)', function(done) {
+    var selector = 'p nl'
+      , result = query('Para\ntext\n\n', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    //console.error(Node.serialize(result[0]))
+
+    expect(result[0].type).to.eql(Node.SOFTBREAK);
+    //expect(result[0].firstChild.literal).to.eql('Heading 6');
+
+    done();
+  });
+
+  it('should query with simple selector - hardbreak (br)', function(done) {
+    var selector = 'p br'
+      , result = query('Para  \ntext\n\n', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    //console.error(Node.serialize(result[0]))
+
+    expect(result[0].type).to.eql(Node.LINEBREAK);
+    //expect(result[0].firstChild.literal).to.eql('Heading 6');
+
+    done();
+  });
 });
