@@ -13,19 +13,13 @@ describe('query:', function() {
 
     expect(result).to.be.an('array')
       .to.have.length(1);
-    expect(result[0].type).to.eql(Node.PARAGRAPH);
 
-    //console.error(Node.serialize(result[0]))
-
-    expect(result[0].firstChild.type).to.eql(Node.LINK);
-    expect(result[0].firstChild.destination).to.eql('http://example.com');
+    expect(result[0].type).to.eql(Node.LINK);
+    expect(result[0].destination).to.eql('http://example.com');
 
     // should have child text node
-    expect(result[0].firstChild.firstChild.type).to.eql(Node.TEXT);
-    expect(result[0].firstChild.firstChild.literal).to.eql('example');
-
-    // nothing else after the link
-    expect(Boolean(result[0].firstChild.next)).to.eql(false);
+    expect(result[0].firstChild.type).to.eql(Node.TEXT);
+    expect(result[0].firstChild.literal).to.eql('example');
 
     done();
   });
@@ -40,6 +34,7 @@ describe('query:', function() {
 
     expect(result).to.be.an('array')
       .to.have.length(1);
+
     expect(result[0].type).to.eql(Node.CODE_BLOCK);
     expect(result[0].literal).to.eql('fenced code\n');
 

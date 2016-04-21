@@ -7,13 +7,16 @@ describe('query:', function() {
   
   it('should query with nested pseudo-selector', function(done) {
     var selector = 'p em:first-child'
-      , result = query('Some *emph*', selector);
+      , result = query('Some *emph* and more *emphasis*', selector);
+
     expect(result).to.be.an('array')
       .to.have.length(1);
+
     //console.error(Node.serialize(result[0]))
-    expect(result[0].type).to.eql(Node.PARAGRAPH);
-    expect(result[0].firstChild.firstChild.type).to.eql(Node.TEXT);
-    expect(result[0].firstChild.firstChild.literal).to.eql('emph');
+  
+    expect(result[0].type).to.eql(Node.EMPH);
+    expect(result[0].firstChild.type).to.eql(Node.TEXT);
+    expect(result[0].firstChild.literal).to.eql('emph');
     done();
   });
 
