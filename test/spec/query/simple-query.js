@@ -271,6 +271,23 @@ describe('query:', function() {
     done();
   });
 
+  it('should query with simple selector (li)', function(done) {
+    var selector = 'li'
+      , result = query('* foo\n\n1. bar', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(2);
+
+    expect(result[0].type).to.eql(Node.ITEM);
+    expect(result[0].listType).to.eql('bullet');
+    expect(result[0].firstChild.firstChild.literal).to.eql('foo');
+
+    expect(result[1].type).to.eql(Node.ITEM);
+    expect(result[1].listType).to.eql('ordered');
+    expect(result[1].firstChild.firstChild.literal).to.eql('bar');
+    done();
+  });
+
   it('should query with simple selector (p text)', function(done) {
     var selector = 'p text'
       , result = query('Paragraph', selector);

@@ -60,7 +60,7 @@ function query(markdown, source) {
 }
 
 /**
- *  Run a queries on an input stream.
+ *  Run queries on an input stream.
  *
  *  @function ql
  *  @param {Object} [opts] processing options.

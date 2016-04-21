@@ -97,4 +97,29 @@ describe('query:', function() {
     done();
   });
 
+  it('should query with attribute selector (block literal)', function(done) {
+    var selector = 'p [literal^=Para]'
+      , result = query('Paragraph *emph* and *italic*', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    expect(result[0].type).to.eql(Node.TEXT);
+
+    done();
+  });
+
+  it('should query with attribute selector (inline literal)', function(done) {
+    var selector = 'p em text[literal^=em]'
+      , result = query('Paragraph *emph* and *italic*', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+
+    expect(result[0].type).to.eql(Node.TEXT);
+    expect(result[0].literal).to.eql('emph');
+
+    done();
+  });
+
 });
