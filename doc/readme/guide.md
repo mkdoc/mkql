@@ -46,12 +46,20 @@ You can match on attributes in the same way as usual:
 a[href^=http://domain.com]
 ```
 
-All the CSS attribute operators are supported, see [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors "Attribute Selectors (MDN)") for more information.
+See [attribute selectors (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) for more information.
 
 ### Pseudo Selectors
 
-The pseudo selectors `:first-child` and `:last-child` are supported.
+The pseudo selectors `:first-child`, `:last-child` and `:nth-child` are supported.
 
 ```css
 p a:first-child
+p a:last-child
+ul li:nth-child(5)
+ul li:nth-child(2n+1)
+ul li:nth-child(odd) /* same as above */
+ul li:nth-child(2n)
+ul li:nth-child(even)  /* same as above */
 ```
+
+See the [:nth-child docs (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) for more information.
