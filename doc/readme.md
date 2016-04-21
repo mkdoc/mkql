@@ -1,4 +1,4 @@
-# Query Lanugage
+# Query Language
 
 <? @include readme/badges.md ?>
 
