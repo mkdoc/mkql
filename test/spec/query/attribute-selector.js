@@ -30,8 +30,6 @@ describe('query:', function() {
           '    indented code block\n\n'
           + '```\nfenced code\n```', selector);
 
-    //console.error(Node.serialize(result[0]))
-
     expect(result).to.be.an('array')
       .to.have.length(1);
 
@@ -46,8 +44,6 @@ describe('query:', function() {
       , result = query(
           '    indented code block\n\n'
           + '```\nfenced code\n```', selector);
-
-    //console.error(Node.serialize(result[0]))
 
     expect(result).to.be.an('array')
       .to.have.length(1);

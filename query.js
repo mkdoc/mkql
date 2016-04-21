@@ -10,8 +10,7 @@ var through = require('through3')
  *  @param {Object} [opts] processing options.
  *
  */
-function Query(opts) {
-  console.error(opts);
+function Query(/*opts*/) {
 }
 
 /**
