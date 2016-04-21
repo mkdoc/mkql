@@ -1,7 +1,7 @@
 {
   "name": "mkql",
   "version": "1.0.0",
-  "description": "Syntax highlight code blocks",
+  "description": "Query language for markdown documents",
   "author": "muji",
   "license": "MIT",
   "repository": {
