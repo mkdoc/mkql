@@ -118,7 +118,13 @@ For all nodes that have a `literal` property you may match on the attribute.
 p text[literal~=example]
 ```
 
-Nodes that have a `literal` property include the `text`, `code_block`, `code`, `html_block` and `html_inline` types.
+Nodes that have a `literal` property include:
+
+* `pre`: code_block
+* `code`: code
+* `text`: text
+* `html`: html_block
+* `inline`: html_inline
 
 #### Anchor Attributes
 
@@ -233,7 +239,7 @@ MIT
 
 ---
 
-Created by [mkdoc](https://github.com/mkdoc/mkdoc) on April 21, 2016
+Created by [mkdoc](https://github.com/mkdoc/mkdoc) on April 22, 2016
 
 [source-highlight]: https://www.gnu.org/software/src-highlite/source-highlight.html
 [mkdoc]: https://github.com/mkdoc/mkdoc

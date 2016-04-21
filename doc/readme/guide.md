@@ -56,7 +56,13 @@ For all nodes that have a `literal` property you may match on the attribute.
 p text[literal~=example]
 ```
 
-Nodes that have a `literal` property include the `text`, `code_block`, `code`, `html_block` and `html_inline` types.
+Nodes that have a `literal` property include:
+
+* `pre`: code_block
+* `code`: code
+* `text`: text
+* `html`: html_block
+* `inline`: html_inline
 
 #### Anchor Attributes
 
