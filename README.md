@@ -25,6 +25,10 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
   - [Tag Selectors](#tag-selectors)
   - [Descendant Operator](#descendant-operator)
   - [Attribute Selectors](#attribute-selectors)
+    - [Literal Attribute](#literal-attribute)
+    - [Anchor Attributes](#anchor-attributes)
+    - [Image Attributes](#image-attributes)
+    - [Code Block Attributes](#code-block-attributes)
   - [Pseudo Selectors](#pseudo-selectors)
 - [Help](#help)
 - [API](#api)
@@ -98,13 +102,50 @@ ol > li
 
 ### Attribute Selectors
 
-You can match on attributes in the same way as usual:
+You can match on attributes in the same way as usual but attributes are matched against tree nodes not HTML elements so the attribute names are often different.
 
 ```css
 a[href^=http://domain.com]
 ```
 
-See [attribute selectors (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) for more information.
+See [attribute selectors (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) for more information on the available operators.
+
+#### Literal Attribute
+
+For all nodes that have a `literal` property you may match on the attribute.
+
+```css
+p text[literal~=example]
+```
+
+Nodes that have a `literal` property include the `text`, `code_block`, `code`, `html_block` and `html_inline` types.
+
+#### Anchor Attributes
+
+Links support the `href` and `title` attributes.
+
+```css
+a[href^=http://]
+a[title^=Example]
+```
+
+#### Image Attributes
+
+Images support the `src` and `title` attributes.
+
+```css
+img[src$=.jpg]
+img[title^=Example]
+```
+
+#### Code Block Attributes
+
+Code blocks support the `info` and `fenced` attributes.
+
+```css
+pre[info^=javascript]
+pre[fenced]
+```
 
 ### Pseudo Selectors
 
