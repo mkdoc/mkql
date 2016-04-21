@@ -238,7 +238,7 @@ Options
   -h, --help              Display help and exit
   --version               Print the version and exit
 
-mkpage@1.0.4
+mkql@1.0.3
 ```
 
 ## API
