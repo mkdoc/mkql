@@ -305,4 +305,26 @@ describe('query:', function() {
     done();
   });
 
+  it('should query with simple selector (html)', function(done) {
+    var selector = 'html'
+      , result = query('Paragraph\n\n<div></div>\n\n', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.HTML_BLOCK);
+    expect(result[0].literal).to.eql('<div></div>');
+    done();
+  });
+
+  it('should query with simple selector (p inline)', function(done) {
+    var selector = 'p inline'
+      , result = query('Paragraph <em>emph</em>\n\n', selector);
+    expect(result).to.be.an('array')
+      .to.have.length(2);
+    expect(result[0].type).to.eql(Node.HTML_INLINE);
+    expect(result[0].literal).to.eql('<em>');
+    expect(result[1].type).to.eql(Node.HTML_INLINE);
+    expect(result[1].literal).to.eql('</em>');
+    done();
+  });
+
 });
