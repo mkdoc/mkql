@@ -41,9 +41,44 @@ describe('query:', function() {
     }
   );
 
+  it('should query with pseudo selector :nth-child(odd) - 2n+1',
+    function(done) {
+      var selector = 'ul li:nth-child(odd)'
+        , result = query(
+            '* 1\n* 2\n* 3\n* 4\n* 5\n\n', selector);
+
+      expect(result).to.be.an('array')
+        .to.have.length(3);
+      expect(result[0].type).to.eql(Node.ITEM);
+      expect(result[0].firstChild.firstChild.literal).to.eql('1');
+      expect(result[1].type).to.eql(Node.ITEM);
+      expect(result[1].firstChild.firstChild.literal).to.eql('3');
+      expect(result[2].type).to.eql(Node.ITEM);
+      expect(result[2].firstChild.firstChild.literal).to.eql('5');
+      done();
+    }
+  );
+
   it('should query with pseudo selector :nth-child(2n) - even',
     function(done) {
       var selector = 'ul li:nth-child(2n)'
+        , result = query(
+            '* 1\n* 2\n* 3\n* 4\n* 5\n\n', selector);
+
+      expect(result).to.be.an('array')
+        .to.have.length(2);
+      expect(result[0].type).to.eql(Node.ITEM);
+      expect(result[0].firstChild.firstChild.literal).to.eql('2');
+      expect(result[1].type).to.eql(Node.ITEM);
+      expect(result[1].firstChild.firstChild.literal).to.eql('4');
+
+      done();
+    }
+  );
+
+  it('should query with pseudo selector :nth-child(even) - 2n',
+    function(done) {
+      var selector = 'ul li:nth-child(even)'
         , result = query(
             '* 1\n* 2\n* 3\n* 4\n* 5\n\n', selector);
 
