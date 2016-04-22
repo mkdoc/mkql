@@ -79,6 +79,7 @@ function ql(opts, cb) {
 
   if(typeof opts === 'string') {
     query = compile(opts); 
+    opts = null;
   }
 
   opts = opts || {};
