@@ -75,7 +75,7 @@ function ql(opts, cb) {
 
   var ast = require('mkast')
     , query
-    , Query = require('./query');
+    , Query = require('./lib/query');
 
   if(typeof opts === 'string') {
     query = compile(opts); 
@@ -93,8 +93,8 @@ function ql(opts, cb) {
     return stream; 
   }
 
-  // pass through stream, we append or prepend
   ast.parser(opts.input)
+    .pipe(ast.deserializer())
     .pipe(stream)
     .pipe(ast.stringify())
     .pipe(opts.output);
@@ -107,7 +107,6 @@ function ql(opts, cb) {
 
   return opts.output;
 }
-
 
 ql.compile = compile;
 ql.query = query;
