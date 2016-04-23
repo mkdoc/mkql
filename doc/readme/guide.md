@@ -2,9 +2,9 @@
 
 Implemented selectors work identically to their CSS counterparts and in some cases extensions have been added specific to markdown tree nodes.
 
-### Tag Selectors
+### Type Selectors
 
-Tags are based on the equivalent HTML element name, so to select a node of `paragraph` type use `p`; the universal selector `*` will select nodes of any type.
+Types are based on the equivalent HTML element name, so to select a node of `paragraph` type use `p`; the universal selector `*` will select nodes of any type.
 
 The map of standard HTML tag names to node types is:
 

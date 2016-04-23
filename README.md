@@ -22,7 +22,7 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 - [Usage](#usage)
 - [Example](#example)
 - [Selectors](#selectors)
-  - [Tag Selectors](#tag-selectors)
+  - [Type Selectors](#type-selectors)
   - [Child Combinator](#child-combinator)
   - [Adjacent Sibling Combinator](#adjacent-sibling-combinator)
   - [Following Sibling Combinator](#following-sibling-combinator)
@@ -68,9 +68,9 @@ mkcat README.md | mkql 'p, ul, pre[info^=javascript]' | mkout
 
 Implemented selectors work identically to their CSS counterparts and in some cases extensions have been added specific to markdown tree nodes.
 
-### Tag Selectors
+### Type Selectors
 
-Tags are based on the equivalent HTML element name, so to select a node of `paragraph` type use `p`; the universal selector `*` will select nodes of any type.
+Types are based on the equivalent HTML element name, so to select a node of `paragraph` type use `p`; the universal selector `*` will select nodes of any type.
 
 The map of standard HTML tag names to node types is:
 
