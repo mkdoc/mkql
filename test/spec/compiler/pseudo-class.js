@@ -72,4 +72,22 @@ describe('compiler:', function() {
     done();
   });
 
+  it('should compile pseudo class (:has)', function(done) {
+    var selector = 'p:has(em)'
+      , result = compile(selector);
+
+    expect(result).to.be.an('object');
+    expect(result.selectors).to.be.an('array')
+      .to.have.length(1);
+
+    var selected = result.selectors[0];
+    expect(selected.tag).to.eql('p');
+    expect(selected.type).to.eql(Node.PARAGRAPH);
+
+    expect(selected.has).to.be.an('array')
+      .to.have.length(1);
+    expect(selected.has[0].tag).eql('em');
+    done();
+  });
+
 });
