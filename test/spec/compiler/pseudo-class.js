@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('compiler:', function() {
   
-  it('should compile pseudo selector (:first-child)', function(done) {
+  it('should compile pseudo class (:first-child)', function(done) {
     var selector = 'p:first-child'
       , result = compile(selector);
     expect(result).to.be.an('object');
@@ -21,7 +21,7 @@ describe('compiler:', function() {
     done();
   });
 
-  it('should compile pseudo selector (:last-child)', function(done) {
+  it('should compile pseudo class (:last-child)', function(done) {
     var selector = 'p:last-child'
       , result = compile(selector);
     expect(result).to.be.an('object');
@@ -37,7 +37,7 @@ describe('compiler:', function() {
     done();
   });
 
-  it('should compile pseudo selector (:nth-child)', function(done) {
+  it('should compile pseudo class (:nth-child)', function(done) {
     var selector = 'p:nth-child(3n+1)'
       , result = compile(selector);
     expect(result).to.be.an('object');
@@ -54,7 +54,7 @@ describe('compiler:', function() {
     done();
   });
 
-  it('should compile pseudo selector (:not)', function(done) {
+  it('should compile pseudo class (:not)', function(done) {
     var selector = 'p:not(:first-child)'
       , result = compile(selector);
 
