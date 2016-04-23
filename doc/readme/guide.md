@@ -178,3 +178,9 @@ ul li:nth-child(even)  /* same as above */
 ```
 
 See the [:nth-child docs (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) for more information.
+
+The negation pseudo-class `:not` is also implemented:
+
+```css
+p:not(:first-child)
+```
