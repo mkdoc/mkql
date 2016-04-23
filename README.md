@@ -271,6 +271,7 @@ The relational pseudo-class `:has` is useful for selecting parents based on a co
 
 ```css
 p:has(em)
+a:has(> img)
 ```
 
 #### Negation
