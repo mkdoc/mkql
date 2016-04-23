@@ -19,4 +19,20 @@ describe('query:', function() {
     done();
   });
 
+  it('should match with pseudo selector (a:has:(> img))', function(done) {
+    var selector = 'a:has(> img)'
+      , result = query(
+          '[foo](/foo)[![logo](/logo.png)](/ "Home")\n\n'
+          + '[![screenshot](/screenshot.jpg)](/screenshot.jpg)', selector);
+
+    expect(result).to.be.an('array')
+      .to.have.length(2);
+    expect(result[0].type).to.eql(Node.LINK);
+    expect(result[0].destination).to.eql('/');
+    expect(result[0].title).to.eql('Home');
+    expect(result[1].type).to.eql(Node.LINK);
+    expect(result[1].destination).to.eql('/screenshot.jpg');
+    done();
+  });
+
 });
