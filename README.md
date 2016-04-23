@@ -243,7 +243,7 @@ ul li[bullet=+]
 
 ### Pseudo Selectors
 
-The pseudo selectors `:first-child`, `:last-child` and `:nth-child` are supported.
+The pseudo selectors `:first-child`, `:last-child`, `:only-child` and `:nth-child` are supported.
 
 ```css
 p a:first-child
@@ -253,6 +253,7 @@ ul li:nth-child(2n+1)
 ul li:nth-child(odd) /* same as above */
 ul li:nth-child(2n)
 ul li:nth-child(even)  /* same as above */
+ul li:only-child
 ```
 
 See the [:nth-child docs (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) for more information.
