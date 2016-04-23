@@ -41,7 +41,7 @@ ol >> li
 
 ### Child Combinator
 
-By default a selector such as `ol li` will find all descendants use the child combinator operator when you just want direct children:
+A selector such as `ol li` will find all descendants use the child combinator operator when you just want direct children:
 
 ```css
 ol > li
@@ -49,7 +49,7 @@ ol > li
 
 ### Adjacent Sibling Combinator
 
-The adjacent sibling combinator is supported. Select all lists that are directly preceeded by a paragraph:
+The adjacent sibling combinator is supported; select all lists that are directly preceeded by a paragraph:
 
 ```css
 p + ul
@@ -57,7 +57,7 @@ p + ul
 
 ### Following Sibling Combinator
 
-The following sibling combinator is supported. Select code that is preceeded by a text node:
+The following sibling combinator is supported; select code that is preceeded by a text node:
 
 ```css
 p text ~ code
