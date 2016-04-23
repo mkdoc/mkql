@@ -204,3 +204,22 @@ Use the `:empty` pseudo-class to select nodes with no children:
 ```css
 p :empty
 ```
+
+### Pseudo Elements
+
+Use the pseudo element prefix `::` to select elements not directly in the tree.
+
+#### HTML
+
+The pseudo elements used to select the `html_block` and `html_inline` nodes by type are:
+
+* `::comment` Select comments `<!-- -->`
+* `::pi` Select processing instructions `<? ?>`
+* `::doctype` Select doctype declarations `<!doctype html>`
+* `::cdata` Select CDATA declarations `<![CDATA[]]>`
+* `::element` Select block and inline elements `<div></div>`
+
+```css
+::doctype           /* select doctype declarations */
+p ::comment         /* select inline html comments */
+```
