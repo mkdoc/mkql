@@ -172,9 +172,9 @@ Use a child selector to get list items:
 ul li[bullet=+]
 ```
 
-### Pseudo Selectors
+### Pseudo Classes
 
-The pseudo selectors `:first-child`, `:last-child`, `:only-child` and `:nth-child` are supported.
+The pseudo classes `:first-child`, `:last-child`, `:only-child` and `:nth-child` are supported.
 
 ```css
 p a:first-child
