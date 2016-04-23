@@ -69,6 +69,10 @@ ast.src('Paragraph\n\n* 1\n* 2\n* 3\n\n```javascript\nvar foo;\n```')
 mkcat README.md | mkql 'p, ul, pre[info^=javascript]' | mkout
 ```
 
+```shell
+echo 'Para 1\n\nPara 2\n\n* List item\n\n' | mkcat | mkql '*'| mkout -y
+```
+
 ## Selectors
 
 Implemented selectors work identically to their CSS counterparts and in some cases extensions have been added specific to markdown tree nodes.
