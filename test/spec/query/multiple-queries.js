@@ -24,9 +24,9 @@ describe('query:', function() {
     done();
   });
 
-  it('should select with multiple queries (p:first-child, ul)',
+  it('should select with multiple queries (> p:first-child, ul)',
     function(done) {
-      var selector = 'p:first-child, ul'
+      var selector = '> p:first-child, ul'
         , result = query('*Paragraph*\n\n* 1\n* 2\n* 3\n\n', selector);
       expect(result).to.be.an('array')
         .to.have.length(2);
@@ -35,7 +35,6 @@ describe('query:', function() {
       done();
     }
   );
-
 
   it('should select with multiple queries (p :first-child, ul)',
     function(done) {

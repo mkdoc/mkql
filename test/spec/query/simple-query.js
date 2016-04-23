@@ -9,20 +9,22 @@ describe('query:', function() {
     var selector = '*'
       , result = query('# Heading 1\n\nPara 1\n\n', selector);
     expect(result).to.be.an('array')
-      .to.have.length(2);
+      .to.have.length(4);
     expect(result[0].type).to.eql(Node.HEADING);
-    expect(result[1].type).to.eql(Node.PARAGRAPH);
+    expect(result[1].type).to.eql(Node.TEXT);
+    expect(result[2].type).to.eql(Node.PARAGRAPH);
+    expect(result[3].type).to.eql(Node.TEXT);
     done();
   });
-
   
   it('should match with simple selector (p)', function(done) {
     var selector = 'p'
-      , result = query('Para 1\n\nPara 2\n\n', selector);
+      , result = query('Para 1\n\nPara 2\n\n* List item\n\n', selector);
     expect(result).to.be.an('array')
-      .to.have.length(2);
+      .to.have.length(3);
     expect(result[0].type).to.eql(Node.PARAGRAPH);
     expect(result[1].type).to.eql(Node.PARAGRAPH);
+    expect(result[2].type).to.eql(Node.PARAGRAPH);
     done();
   });
 
