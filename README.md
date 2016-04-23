@@ -24,6 +24,8 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 - [Selectors](#selectors)
   - [Tag Selectors](#tag-selectors)
   - [Child Combinator](#child-combinator)
+  - [Adjacent Sibling Combinator](#adjacent-sibling-combinator)
+  - [Following Sibling Combinator](#following-sibling-combinator)
   - [Attribute Selectors](#attribute-selectors)
     - [Literal Attribute](#literal-attribute)
     - [Content Attribute](#content-attribute)
@@ -100,6 +102,22 @@ By default a selector such as `ol li` will find all descendants use the child co
 
 ```css
 ol > li
+```
+
+### Adjacent Sibling Combinator
+
+The adjacent sibling combinator is supported. Select all lists that are directly preceeded by a paragraph:
+
+```css
+p + ul
+```
+
+### Following Sibling Combinator
+
+The following sibling combinator is supported. Select code that is preceeded by a text node:
+
+```css
+p text ~ code
 ```
 
 ### Attribute Selectors
@@ -297,7 +315,7 @@ MIT
 
 ---
 
-Created by [mkdoc](https://github.com/mkdoc/mkdoc) on April 22, 2016
+Created by [mkdoc](https://github.com/mkdoc/mkdoc) on April 23, 2016
 
 [source-highlight]: https://www.gnu.org/software/src-highlite/source-highlight.html
 [mkdoc]: https://github.com/mkdoc/mkdoc

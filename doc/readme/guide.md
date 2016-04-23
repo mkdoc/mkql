@@ -38,6 +38,22 @@ By default a selector such as `ol li` will find all descendants use the child co
 ol > li
 ```
 
+### Adjacent Sibling Combinator
+
+The adjacent sibling combinator is supported. Select all lists that are directly preceeded by a paragraph:
+
+```css
+p + ul
+```
+
+### Following Sibling Combinator
+
+The following sibling combinator is supported. Select code that is preceeded by a text node:
+
+```css
+p text ~ code
+```
+
 ### Attribute Selectors
 
 You can match on attributes in the same way as usual but attributes are matched against tree nodes not HTML elements so the attribute names are often different.
