@@ -292,7 +292,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with descendant selector (p > text) - mixed', function(done) {
+  it('should query with child combinator (p > text) - mixed', function(done) {
     var selector = 'p > text'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
     expect(result.length).to.eql(3);
