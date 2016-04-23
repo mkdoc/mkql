@@ -320,7 +320,7 @@ Options
   -h, --help              Display help and exit
   --version               Print the version and exit
 
-mkql@1.0.3
+mkql@1.0.7
 ```
 
 ## API
