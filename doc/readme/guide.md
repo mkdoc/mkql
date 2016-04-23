@@ -188,8 +188,18 @@ ul li:nth-child(even)  /* same as above */
 
 See the [:nth-child docs (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) for more information.
 
-The negation pseudo-class `:not` is also implemented:
+#### Negation
+
+The negation pseudo-class `:not` is also available:
 
 ```css
 p:not(:first-child)
+```
+
+#### Empty
+
+Use the `:empty` pseudo-class to select nodes with no children:
+
+```css
+p :empty
 ```
