@@ -23,6 +23,7 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 - [Example](#example)
 - [Selectors](#selectors)
   - [Type Selectors](#type-selectors)
+  - [Descendant Combinator](#descendant-combinator)
   - [Child Combinator](#child-combinator)
   - [Adjacent Sibling Combinator](#adjacent-sibling-combinator)
   - [Following Sibling Combinator](#following-sibling-combinator)
@@ -95,6 +96,15 @@ Extensions for markdown specific types:
 * `text`: text
 * `html`: html_block
 * `inline`: html_inline
+
+### Descendant Combinator
+
+Use whitespace for a descendant combinator or if you prefer use the explicit `>>` notation from CSS4:
+
+```css
+ol li
+ol >> li
+```
 
 ### Child Combinator
 
@@ -245,7 +255,7 @@ ul li:nth-child(even)  /* same as above */
 
 See the [:nth-child docs (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) for more information.
 
-The `:not` selector is also implemented:
+The negation pseudo-class `:not` is also implemented:
 
 ```css
 p:not(:first-child)

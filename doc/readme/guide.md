@@ -30,6 +30,15 @@ Extensions for markdown specific types:
 * `html`: html_block
 * `inline`: html_inline
 
+### Descendant Combinator
+
+Use whitespace for a descendant combinator or if you prefer use the explicit `>>` notation from CSS4:
+
+```css
+ol li
+ol >> li
+```
+
 ### Child Combinator
 
 By default a selector such as `ol li` will find all descendants use the child combinator operator when you just want direct children:
