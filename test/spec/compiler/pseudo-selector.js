@@ -16,6 +16,7 @@ describe('compiler:', function() {
     expect(selected.type).to.eql(Node.PARAGRAPH);
 
     expect(selected.pseudo).to.be.an('object');
+    expect(selected.pseudo.name).to.eql(':first-child');
     expect(selected.pseudo.literal).to.eql(':first-child');
     done();
   });
@@ -31,6 +32,7 @@ describe('compiler:', function() {
     expect(selected.type).to.eql(Node.PARAGRAPH);
 
     expect(selected.pseudo).to.be.an('object');
+    expect(selected.pseudo.name).to.eql(':last-child');
     expect(selected.pseudo.literal).to.eql(':last-child');
     done();
   });
@@ -42,9 +44,11 @@ describe('compiler:', function() {
     expect(result.selectors).to.be.an('array')
       .to.have.length(1);
     var selected = result.selectors[0];
+
     expect(selected.tag).to.eql('p');
     expect(selected.type).to.eql(Node.PARAGRAPH);
     expect(selected.pseudo).to.be.an('object');
+    expect(selected.pseudo.name).to.eql(':nth-child');
     expect(selected.pseudo.literal).to.eql(':nth-child(3n+1)');
     expect(selected.pseudo.expr).to.eql('3n+1');
     done();
