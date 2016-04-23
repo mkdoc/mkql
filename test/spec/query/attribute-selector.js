@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
   
-  it('should query with attribute selector (href)', function(done) {
+  it('should match with attribute selector (href)', function(done) {
     var selector = 'p a[href=http://example.com]'
       , result = query(
           'A fixture [example](http://example.com) website, '
@@ -24,7 +24,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (fenced)', function(done) {
+  it('should match with attribute selector (fenced)', function(done) {
     var selector = '[fenced]'
       , result = query(
           '    indented code block\n\n'
@@ -39,7 +39,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (pre[fenced])', function(done) {
+  it('should match with attribute selector (pre[fenced])', function(done) {
     var selector = 'pre[fenced]'
       , result = query(
           '    indented code block\n\n'
@@ -53,7 +53,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (title)', function(done) {
+  it('should match with attribute selector (title)', function(done) {
     var selector = 'p img[title=example title]'
       , result = query(
           'A fixture ![example](http://example.com "example title") website, '
@@ -73,7 +73,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (src)', function(done) {
+  it('should match with attribute selector (src)', function(done) {
     var selector = 'p img[src=http://example.com]'
       , result = query(
           'A fixture ![example](http://example.com "example title") website, '
@@ -93,7 +93,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (block literal)', function(done) {
+  it('should match with attribute selector (block literal)', function(done) {
     var selector = 'p [literal^=Para]'
       , result = query('Paragraph *emph* and *italic*', selector);
 
@@ -105,7 +105,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (inline literal)', function(done) {
+  it('should match with attribute selector (inline literal)', function(done) {
     var selector = 'p em text[literal^=em]'
       , result = query('Paragraph *emph* and *italic*', selector);
 
@@ -118,7 +118,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (block content)', function(done) {
+  it('should match with attribute selector (block content)', function(done) {
     var selector = 'p[content*=emph and italic]'
       , result = query('Paragraph *emph* and *italic*', selector);
 
@@ -130,7 +130,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (inline content)', function(done) {
+  it('should match with attribute selector (inline content)', function(done) {
     var selector = 'p em[content^=em]'
       , result = query('Paragraph *emph* and *italic*', selector);
 
@@ -142,7 +142,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector pattern (=~)', function(done) {
+  it('should match with attribute selector pattern (=~)', function(done) {
     var selector = 'p [literal=~(em|it)]'
       , result = query('Paragraph *emph* and *italic*', selector);
 
@@ -157,7 +157,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (bullet)', function(done) {
+  it('should match with attribute selector (bullet)', function(done) {
     var selector = 'ul[bullet=*]'
       , result = query('+ foo\n\n* bar\n\n- qux\n\n', selector);
 
@@ -169,7 +169,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute selector (delimiter)', function(done) {
+  it('should match with attribute selector (delimiter)', function(done) {
     var selector = 'ol[delimiter=)]'
       , result = query('1. foo\n\n2) bar\n\n1. qux\n\n', selector);
 

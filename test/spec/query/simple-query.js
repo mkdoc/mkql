@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
 
-  it('should query with simple selector (*)', function(done) {
+  it('should match with simple selector (*)', function(done) {
     var selector = '*'
       , result = query('# Heading 1\n\nPara 1\n\n', selector);
     expect(result).to.be.an('array')
@@ -16,7 +16,7 @@ describe('query:', function() {
   });
 
   
-  it('should query with simple selector (p)', function(done) {
+  it('should match with simple selector (p)', function(done) {
     var selector = 'p'
       , result = query('Para 1\n\nPara 2\n\n', selector);
     expect(result).to.be.an('array')
@@ -26,7 +26,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (h1)', function(done) {
+  it('should match with simple selector (h1)', function(done) {
     var selector = 'h1'
       , result = query(
           '# Heading 1\n\n## Heading 2\n\n# Heading 1\n\n', selector);
@@ -41,7 +41,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (h2)', function(done) {
+  it('should match with simple selector (h2)', function(done) {
     var selector = 'h2'
       , result = query(
           '# Heading 1\n\n## Heading 2\n\n# Heading 1\n\n', selector);
@@ -54,7 +54,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (h3)', function(done) {
+  it('should match with simple selector (h3)', function(done) {
     var selector = 'h3'
       , result = query(
           '# Heading 1\n\n### Heading 3\n\n# Heading 1\n\n', selector);
@@ -67,7 +67,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (h4)', function(done) {
+  it('should match with simple selector (h4)', function(done) {
     var selector = 'h4'
       , result = query(
           '# Heading 1\n\n#### Heading 4\n\n# Heading 1\n\n', selector);
@@ -80,7 +80,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (h5)', function(done) {
+  it('should match with simple selector (h5)', function(done) {
     var selector = 'h5'
       , result = query(
           '# Heading 1\n\n##### Heading 5\n\n# Heading 1\n\n', selector);
@@ -93,7 +93,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (h6)', function(done) {
+  it('should match with simple selector (h6)', function(done) {
     var selector = 'h6'
       , result = query(
           '# Heading 1\n\n###### Heading 6\n\n# Heading 1\n\n', selector);
@@ -106,7 +106,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector - softbreak (nl)', function(done) {
+  it('should match with simple selector - softbreak (nl)', function(done) {
     var selector = 'p nl'
       , result = query('Para\ntext\n\n', selector);
     expect(result).to.be.an('array')
@@ -117,7 +117,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector - hardbreak (br)', function(done) {
+  it('should match with simple selector - hardbreak (br)', function(done) {
     var selector = 'p br'
       , result = query('Para  \ntext\n\n', selector);
     expect(result).to.be.an('array')
@@ -128,7 +128,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (p code)', function(done) {
+  it('should match with simple selector (p code)', function(done) {
     var selector = 'p code'
       , result = query('Some `foo` and `bar`\n\n', selector);
     expect(result).to.be.an('array')
@@ -140,7 +140,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (p em)', function(done) {
+  it('should match with simple selector (p em)', function(done) {
     var selector = 'p em'
       , result = query('Some *foo* and *bar*\n\n', selector);
     expect(result).to.be.an('array')
@@ -152,7 +152,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (p strong)', function(done) {
+  it('should match with simple selector (p strong)', function(done) {
     var selector = 'p strong'
       , result = query('Some **foo** and **bar**\n\n', selector);
     expect(result).to.be.an('array')
@@ -164,7 +164,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (blockquote)', function(done) {
+  it('should match with simple selector (blockquote)', function(done) {
     var selector = 'blockquote'
       , result = query('Para 1\n\n> Quotation', selector);
     expect(result).to.be.an('array')
@@ -173,7 +173,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (pre) + fenced', function(done) {
+  it('should match with simple selector (pre) + fenced', function(done) {
     var selector = 'pre'
       , result = query('```\ncode\n```\n\nParagraph\n', selector);
     expect(result).to.be.an('array')
@@ -182,7 +182,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (pre) + indented', function(done) {
+  it('should match with simple selector (pre) + indented', function(done) {
     var selector = 'pre'
       , result = query('    code\n\nParagraph\n', selector);
     expect(result).to.be.an('array')
@@ -191,7 +191,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (hr)', function(done) {
+  it('should match with simple selector (hr)', function(done) {
     var selector = 'hr'
       , result = query('Para 1\n\n---\n\nPara 1', selector);
     expect(result).to.be.an('array')
@@ -200,7 +200,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (img)', function(done) {
+  it('should match with simple selector (img)', function(done) {
     var selector = 'p img'
       , result = query('Para 1 ![image](/image.jpg)\n\n', selector);
     expect(result).to.be.an('array')
@@ -209,7 +209,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (ul)', function(done) {
+  it('should match with simple selector (ul)', function(done) {
     var selector = 'ul'
       , result = query('* foo\n\n1. bar', selector);
     expect(result).to.be.an('array')
@@ -219,7 +219,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (ol)', function(done) {
+  it('should match with simple selector (ol)', function(done) {
     var selector = 'ol'
       , result = query('* foo\n\n1. bar', selector);
     expect(result).to.be.an('array')
@@ -229,7 +229,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (ul li)', function(done) {
+  it('should match with simple selector (ul li)', function(done) {
     var selector = 'ul li'
       , result = query('* foo\n\n1. bar', selector);
     expect(result).to.be.an('array')
@@ -240,7 +240,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (ol li)', function(done) {
+  it('should match with simple selector (ol li)', function(done) {
     var selector = 'ol li'
       , result = query('* foo\n\n1. bar', selector);
 
@@ -253,7 +253,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (li)', function(done) {
+  it('should match with simple selector (li)', function(done) {
     var selector = 'li'
       , result = query('* foo\n\n1. bar', selector);
 
@@ -270,7 +270,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (p text)', function(done) {
+  it('should match with simple selector (p text)', function(done) {
     var selector = 'p text'
       , result = query('Paragraph', selector);
     expect(result).to.be.an('array')
@@ -280,7 +280,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (p text) - mixed', function(done) {
+  it('should match with simple selector (p text) - mixed', function(done) {
     var selector = 'p text'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
     expect(result.length).to.eql(5);
@@ -292,7 +292,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (html)', function(done) {
+  it('should match with simple selector (html)', function(done) {
     var selector = 'html'
       , result = query('Paragraph\n\n<div></div>\n\n', selector);
     expect(result).to.be.an('array')
@@ -302,7 +302,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with simple selector (p inline)', function(done) {
+  it('should match with simple selector (p inline)', function(done) {
     var selector = 'p inline'
       , result = query('Paragraph <em>emph</em>\n\n', selector);
     expect(result).to.be.an('array')

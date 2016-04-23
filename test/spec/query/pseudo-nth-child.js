@@ -10,7 +10,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
   
-  it('should query with pseudo selector :nth-child(0n+1)', function(done) {
+  it('should match with pseudo selector :nth-child(0n+1)', function(done) {
     var selector = 'ul li:nth-child(0n+1)'
       , result = query(
           '* 1\n* 2\n* 3\n\n', selector);
@@ -23,7 +23,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with pseudo selector :nth-child(2n+1) - odd',
+  it('should match with pseudo selector :nth-child(2n+1) - odd',
     function(done) {
       var selector = 'ul li:nth-child(2n+1)'
         , result = query(
@@ -41,7 +41,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with pseudo selector :nth-child(odd) - 2n+1',
+  it('should match with pseudo selector :nth-child(odd) - 2n+1',
     function(done) {
       var selector = 'ul li:nth-child(odd)'
         , result = query(
@@ -59,7 +59,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with pseudo selector :nth-child(2n) - even',
+  it('should match with pseudo selector :nth-child(2n) - even',
     function(done) {
       var selector = 'ul li:nth-child(2n)'
         , result = query(
@@ -76,7 +76,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with pseudo selector :nth-child(even) - 2n',
+  it('should match with pseudo selector :nth-child(even) - 2n',
     function(done) {
       var selector = 'ul li:nth-child(even)'
         , result = query(
@@ -93,7 +93,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with pseudo selector :nth-child(2)', function(done) {
+  it('should match with pseudo selector :nth-child(2)', function(done) {
     var selector = 'ul li:nth-child(2)'
       , result = query(
           '* 1\n* 2\n* 3\n* 4\n\n', selector);
@@ -106,7 +106,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with pseudo selector :nth-child(4n+1)',
+  it('should match with pseudo selector :nth-child(4n+1)',
     function(done) {
       var selector = 'ul li:nth-child(4n+1)'
         , result = query(
@@ -122,7 +122,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with pseudo selector :nth-child(4n+4)',
+  it('should match with pseudo selector :nth-child(4n+4)',
     function(done) {
       var selector = 'ul li:nth-child(4n+4)'
         , result = query(
@@ -137,7 +137,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with pseudo selector :nth-child(4n)',
+  it('should match with pseudo selector :nth-child(4n)',
     function(done) {
       var selector = 'ul li:nth-child(4n)'
         , result = query(
@@ -152,7 +152,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with pseudo selector :nth-child(5n-2)',
+  it('should match with pseudo selector :nth-child(5n-2)',
     function(done) {
       var selector = 'ul li:nth-child(5n-2)'
         , result = query(
@@ -167,7 +167,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with pseudo selector :nth-child(-n+3)',
+  it('should match with pseudo selector :nth-child(-n+3)',
     function(done) {
       var selector = 'ul li:nth-child(-n+3)'
         , result = query(

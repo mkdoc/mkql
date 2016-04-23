@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
   
-  it('should query with nested pseudo-selector', function(done) {
+  it('should match with nested pseudo-selector', function(done) {
     var selector = 'p em:first-child'
       , result = query('*emph* and more *emphasis*', selector);
 

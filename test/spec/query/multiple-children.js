@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
   
-  it('should query with multiple children w/ multiple parents', function(done) {
+  it('should match with multiple children w/ multiple parents', function(done) {
     var selector = 'p code'
       , result = query('Para `1`\n\nPara `2`\n\n', selector);
 
@@ -21,7 +21,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with multiple children w/ single parent', function(done) {
+  it('should match with multiple children w/ single parent', function(done) {
     var selector = 'p code'
       , result = query('Para `1` and `2`\n\n', selector);
 

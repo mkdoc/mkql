@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
   
-  it('should query with pseudo selector (:empty)', function(done) {
+  it('should match with pseudo selector (:empty)', function(done) {
     var selector = ':empty'
       , result = query(
           'Para 1\n\nPara 2', selector);

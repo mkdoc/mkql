@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
 
-  it('should query with child combinator (p > text) - mixed', function(done) {
+  it('should match with child combinator (p > text) - mixed', function(done) {
     var selector = 'p > text'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
 
@@ -16,7 +16,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with child combinator (p > em) - mixed', function(done) {
+  it('should match with child combinator (p > em) - mixed', function(done) {
     var selector = 'p > em'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
 

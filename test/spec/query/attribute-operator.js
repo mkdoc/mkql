@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
   
-  it('should query with attribute operator (=)', function(done) {
+  it('should match with attribute operator (=)', function(done) {
     var selector = 'p img[title=website logo]'
       , result = query('![image](/image.jpg "website logo")', selector);
 
@@ -19,7 +19,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute operator (~=)', function(done) {
+  it('should match with attribute operator (~=)', function(done) {
     var selector = 'p img[title~=logo]'
       , result = query('![image](/image.jpg "website logo")', selector);
 
@@ -33,7 +33,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute operator (|=)', function(done) {
+  it('should match with attribute operator (|=)', function(done) {
     var selector = 'p img[title|=website logo]'
       , result = query('![image](/image.jpg "website logo")', selector);
 
@@ -47,7 +47,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute operator (|=) + hyphen', function(done) {
+  it('should match with attribute operator (|=) + hyphen', function(done) {
     var selector = 'p img[title|=website]'
       , result = query('![image](/image.jpg "website-logo")', selector);
 
@@ -61,7 +61,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute operator (^=)', function(done) {
+  it('should match with attribute operator (^=)', function(done) {
     var selector = 'p img[title^=website]'
       , result = query('![image](/image.jpg "website logo")', selector);
 
@@ -75,7 +75,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute operator ($=)', function(done) {
+  it('should match with attribute operator ($=)', function(done) {
     var selector = 'p img[title$=logo]'
       , result = query('![image](/image.jpg "website logo")', selector);
 
@@ -89,7 +89,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with attribute operator (*=)', function(done) {
+  it('should match with attribute operator (*=)', function(done) {
     var selector = 'p img[title*=site]'
       , result = query('![image](/image.jpg "website logo")', selector);
 

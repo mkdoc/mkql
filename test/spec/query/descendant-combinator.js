@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
 
-  it('should query with descendant combinator (p >> text)', function(done) {
+  it('should match with descendant combinator (p >> text)', function(done) {
     var selector = 'p >> text'
       , result = query('Paragraph', selector);
 
@@ -16,7 +16,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with descendant combinator (p >> em)', function(done) {
+  it('should match with descendant combinator (p >> em)', function(done) {
     var selector = 'p >> em'
       , result = query('Paragraph *emph*, **strong** and `code`', selector);
     expect(result.length).to.eql(1);

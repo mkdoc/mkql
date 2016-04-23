@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
   
-  it('should query with pseudo selector (:first-child)', function(done) {
+  it('should match with pseudo selector (:first-child)', function(done) {
     var selector = ':first-child'
       , result = query(
           'Para 1\n\nPara 2', selector);
@@ -18,7 +18,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with pseudo selector (:last-child)', function(done) {
+  it('should match with pseudo selector (:last-child)', function(done) {
     var selector = ':last-child'
       , result = query(
           'Para 1\n\nPara 2', selector);
@@ -29,7 +29,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with tag + pseudo selector (:first-child)', function(done) {
+  it('should match with tag + pseudo selector (:first-child)', function(done) {
     var selector = 'p:first-child'
       , result = query(
           'Para 1\n\nPara 2', selector);
@@ -42,7 +42,7 @@ describe('query:', function() {
     done();
   });
 
-  it('should query with tag + pseudo selector (:last-child)', function(done) {
+  it('should match with tag + pseudo selector (:last-child)', function(done) {
     var selector = 'p:last-child'
       , result = query(
           'Para 1\n\nPara 2', selector);

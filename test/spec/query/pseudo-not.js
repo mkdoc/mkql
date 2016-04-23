@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
   
-  it('should query with pseudo selector (:not:(:first-child))', function(done) {
+  it('should match with pseudo selector (:not:(:first-child))', function(done) {
     var selector = 'p:not(:first-child)'
       , result = query(
           'Para 1\n\nPara 2\n\nPara 3', selector);

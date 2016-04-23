@@ -5,7 +5,7 @@ var expect = require('chai').expect
 
 describe('query:', function() {
 
-  it('should query with next sibling combinator (p em + text)',
+  it('should match with next sibling combinator (p em + text)',
     function(done) {
       var selector = 'p em + text'
         , result = query('Paragraph *emph*, **strong** and `code`', selector);
@@ -17,7 +17,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with next sibling combinator (p * + text)',
+  it('should match with next sibling combinator (p * + text)',
     function(done) {
       var selector = 'p * + text'
         , result = query('Paragraph *emph*, **strong** and `code`', selector);
@@ -31,7 +31,7 @@ describe('query:', function() {
     }
   );
 
-  it('should query with next sibling combinator (p strong + text)',
+  it('should match with next sibling combinator (p strong + text)',
     function(done) {
       var selector = 'p strong + text'
         , result = query('Paragraph *emph*, **strong** and `code`', selector);
