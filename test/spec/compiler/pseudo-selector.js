@@ -54,4 +54,22 @@ describe('compiler:', function() {
     done();
   });
 
+  it('should compile pseudo selector (:not)', function(done) {
+    var selector = 'p:not(:first-child)'
+      , result = compile(selector);
+
+    expect(result).to.be.an('object');
+    expect(result.selectors).to.be.an('array')
+      .to.have.length(1);
+
+    var selected = result.selectors[0];
+    expect(selected.tag).to.eql('p');
+    expect(selected.type).to.eql(Node.PARAGRAPH);
+
+    expect(selected.not).to.be.an('object');
+    expect(selected.not.pseudo).to.be.an('object');
+    expect(selected.not.pseudo.name).to.eql(':first-child');
+    done();
+  });
+
 });
