@@ -189,6 +189,14 @@ ul li:only-child
 
 See the [:nth-child docs (@mdn)](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) for more information.
 
+#### Relational
+
+The relational pseudo-class `:has` is useful for selecting parents based on a condition:
+
+```css
+p:has(em)
+```
+
 #### Negation
 
 The negation pseudo-class `:not` is also available:
