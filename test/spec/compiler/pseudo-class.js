@@ -66,9 +66,9 @@ describe('compiler:', function() {
     expect(selected.tag).to.eql('p');
     expect(selected.type).to.eql(Node.PARAGRAPH);
 
-    expect(selected.not).to.be.an('object');
-    expect(selected.not.pseudo).to.be.an('object');
-    expect(selected.not.pseudo.name).to.eql(':first-child');
+    expect(selected.not).to.be.an('array');
+    expect(selected.not[0].pseudo).to.be.an('object');
+    expect(selected.not[0].pseudo.name).to.eql(':first-child');
     done();
   });
 
