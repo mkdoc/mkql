@@ -76,7 +76,7 @@ printf 'Para 1\n\nPara 2\n\n* List item\n\n' | mkcat | mkql '*' | mkout -y
 
 ## Selectors
 
-Implemented selectors work identically to their CSS counterparts and in some cases extensions have been added specific to markdown tree nodes.
+Implemented selectors work like their CSS counterparts and in some cases extensions have been added specific to markdown tree nodes.
 
 ### Type Selectors
 
