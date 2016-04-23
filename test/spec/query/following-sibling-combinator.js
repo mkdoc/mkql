@@ -31,4 +31,16 @@ describe('query:', function() {
     }
   );
 
+  it('should query with following sibling combinator (p text ~ em)',
+    function(done) {
+      var selector = 'p text ~ em'
+        , result = query('*Para*graph *emph*, **strong** and `code`', selector);
+
+      expect(result.length).to.eql(1);
+      expect(result[0].type).to.eql(Node.EMPH);
+
+      done();
+    }
+  );
+
 });
