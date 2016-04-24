@@ -38,8 +38,11 @@ function range(start, end) {
       throw new Error(
         'invalid range query \'' + start + '\' to \'' + end + '\''); 
     }
+
+    finish = finish.selectors;
   }
 
+  begin = begin.selectors;
   return {start: begin, end: finish};
 }
 
@@ -54,13 +57,9 @@ function range(start, end) {
  */
 function slice(source, opts) {
   opts = opts || {};
-  var Range = require('./lib/range')
-    , start = 
-      source.start = source.start.selectors
-    , end =
-        source.end && source.end.selectors ? source.end.selectors : null;
-  opts.start = start;
-  opts.end = end;
+  var Range = require('./lib/range');
+  opts.start = source.start;
+  opts.end = source.end;
   return new Range(opts);
 }
 
@@ -122,7 +121,6 @@ function query(markdown, source, opts) {
     for(i = 0;i < nodes.length;i++) {
       range.write(nodes[i], i, i === (nodes.length - 1)); 
     }
-    //console.error('' + range.end)
     list = range.end();
   }else{
     // iterate over 

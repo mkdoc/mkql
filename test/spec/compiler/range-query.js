@@ -9,9 +9,9 @@ describe('compiler:', function() {
     var start = 'h1'
       , result = range(start);
     expect(result).to.be.an('object');
-    expect(result.start).to.be.an('object');
-    expect(result.start.selectors[0].tag).to.eql('h1');
-    expect(result.start.selectors[0].type).to.eql(Node.HEADING);
+    expect(result.start).to.be.an('array');
+    expect(result.start[0].tag).to.eql('h1');
+    expect(result.start[0].type).to.eql(Node.HEADING);
     done();
   });
 
@@ -20,13 +20,13 @@ describe('compiler:', function() {
       , end = 'h2'
       , result = range(start, end);
     expect(result).to.be.an('object');
-    expect(result.start).to.be.an('object');
-    expect(result.start.selectors[0].tag).to.eql('h1');
-    expect(result.start.selectors[0].type).to.eql(Node.HEADING);
+    expect(result.start).to.be.an('array');
+    expect(result.start[0].tag).to.eql('h1');
+    expect(result.start[0].type).to.eql(Node.HEADING);
 
-    expect(result.end).to.be.an('object');
-    expect(result.end.selectors[0].tag).to.eql('h2');
-    expect(result.end.selectors[0].type).to.eql(Node.HEADING);
+    expect(result.end).to.be.an('array');
+    expect(result.end[0].tag).to.eql('h2');
+    expect(result.end[0].type).to.eql(Node.HEADING);
     done();
   });
 
