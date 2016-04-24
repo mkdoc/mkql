@@ -314,10 +314,10 @@ p ::comment         /* select inline html comments */
 ## Help
 
 ```
-Usage: mkql [-dprmh] [--delete] [--preserve] [--range] [--multiple] [--help]
-            [--version] <selector...>
-       mkql [-dprmh] [--delete] [--preserve] [--multiple] [--help] [--version]
-            --range <start-selector> [end-selector]
+Usage: mkql [-dprmnh] [--delete] [--preserve] [--range] [--multiple]
+            [--newline] [--help] [--version] <selector...>
+       mkql [-dprmnh] [--delete] [--preserve] [--multiple] [--newline] [--help]
+            [--version] --range <start-selector> [end-selector]
 
   Query documents with selectors.
 
@@ -326,6 +326,7 @@ Options
   -p, --preserve          Preserve text when deleting
   -r, --range             Execute a range query
   -m, --multiple          Include multiple ranges
+  -n, --newline           Add line break between matches
   -h, --help              Display help and exit
   --version               Print the version and exit
 
