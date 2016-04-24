@@ -12,6 +12,38 @@ function compile(source) {
 }
 
 /**
+ *  Compile a range query.
+ *
+ *  When an `end` selector is given it must have the same number of 
+ *  selectors in the list as the `start` selector.
+ *
+ *  If the `end` selector is not given the range will end when the `start` 
+ *  selector matches again or the end of file is reached.
+ *
+ *  @function range
+ *  @param {String} start selector to start the range match.
+ *  @param {String} [end] selector to end the range match.
+ */
+function range(start, end) {
+  var compiler = require('./lib/compiler')
+    , begin = compiler(start)
+    , finish;
+
+  if(end) {
+    finish = compiler(end);
+
+    if(!begin.selectors
+      || !finish.selectors
+      ||(begin.selectors.length !== finish.selectors.length)) {
+      throw new Error(
+        'invalid range query \'' + start + '\' to \'' + end + '\''); 
+    }
+  }
+
+  return {start: begin, end: finish};
+}
+
+/**
  *  Query a markdown document tree with a source selector.
  *
  *  If the markdown parameter is a string it is parsed into a document tree.
@@ -110,6 +142,7 @@ function ql(opts, cb) {
 }
 
 ql.compile = compile;
+ql.range = range;
 ql.query = query;
 
 module.exports = ql;
