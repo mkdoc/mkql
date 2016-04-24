@@ -314,15 +314,21 @@ p ::comment         /* select inline html comments */
 ## Help
 
 ```
-Usage: mkql [-h] [--help] [--version] <selector...>
+Usage: mkql [-drmh] [--delete] [--range] [--multiple] [--help] [--version]
+            <selector...>
+       mkql [-drmh] [--delete] [--multiple] [--help] [--version] --range
+            <start-selector> [end-selector]
 
   Query documents with selectors.
 
 Options
+  -d, --delete            Remove matched nodes
+  -r, --range             Execute a range query
+  -m, --multiple          Include multiple ranges
   -h, --help              Display help and exit
   --version               Print the version and exit
 
-mkql@1.0.7
+mkql@1.0.8
 ```
 
 ## API
