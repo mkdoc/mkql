@@ -56,7 +56,7 @@ function slice(source, opts) {
   opts = opts || {};
   var Range = require('./lib/range')
     , start = 
-      source.start && source.start.selectors ? source.start.selectors : []
+      source.start = source.start.selectors
     , end =
         source.end && source.end.selectors ? source.end.selectors : null;
   opts.start = start;
@@ -89,11 +89,16 @@ function query(markdown, source, opts) {
     , i
     , nodes = []
     , list = []
+    , selectors
     , isRange = source && source.start;
+
+  source = source || {};
 
   if(typeof source === 'string') {
     source = compile(source); 
   }
+
+  selectors = source.selectors || [];
 
   if(typeof markdown === 'string') {
     doc = ast.parse(markdown);
@@ -102,7 +107,11 @@ function query(markdown, source, opts) {
       nodes.push(child); 
       child = child.next;
     }
+  // existing node list
+  }else if(Array.isArray(markdown)) {
+    nodes = markdown;
   // assume existing node object
+  /* istanbul ignore else: other types result in empty list */
   }else if(markdown && !Array.isArray(markdown)) {
     nodes = [markdown]; 
   }
@@ -117,10 +126,8 @@ function query(markdown, source, opts) {
     list = range.end();
   }else{
     // iterate over 
-    if(source.selectors) {
-      for(i = 0;i < source.selectors.length;i++) {
-        source.selectors[i].exec(nodes, list);
-      }
+    for(i = 0;i < selectors.length;i++) {
+      selectors[i].exec(nodes, list);
     }
   }
 

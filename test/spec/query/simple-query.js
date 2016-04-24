@@ -16,6 +16,31 @@ describe('query:', function() {
     expect(result[3].type).to.eql(Node.TEXT);
     done();
   });
+
+  it('should match with node list', function(done) {
+    var selector = '*'
+      , doc = ast.parse('# Heading 1\n\nPara 1\n\n')
+      , nodes = [doc.firstChild, doc.lastChild]
+      , result = query(nodes, selector);
+    expect(result).to.be.an('array')
+      .to.have.length(4);
+    expect(result[0].type).to.eql(Node.HEADING);
+    expect(result[1].type).to.eql(Node.TEXT);
+    expect(result[2].type).to.eql(Node.PARAGRAPH);
+    expect(result[3].type).to.eql(Node.TEXT);
+    done();
+  });
+  
+  it('should match with node', function(done) {
+    var selector = 'p em'
+      , doc = ast.parse('Para *1*\n\n')
+      , nodes = doc.firstChild
+      , result = query(nodes, selector);
+    expect(result).to.be.an('array')
+      .to.have.length(1);
+    expect(result[0].type).to.eql(Node.EMPH);
+    done();
+  });
   
   it('should match with simple selector (p)', function(done) {
     var selector = 'p'
