@@ -314,15 +314,16 @@ p ::comment         /* select inline html comments */
 ## Help
 
 ```
-Usage: mkql [-drmh] [--delete] [--range] [--multiple] [--help] [--version]
-            <selector...>
-       mkql [-drmh] [--delete] [--multiple] [--help] [--version] --range
-            <start-selector> [end-selector]
+Usage: mkql [-dprmh] [--delete] [--preserve] [--range] [--multiple] [--help]
+            [--version] <selector...>
+       mkql [-dprmh] [--delete] [--preserve] [--multiple] [--help] [--version]
+            --range <start-selector> [end-selector]
 
   Query documents with selectors.
 
 Options
   -d, --delete            Remove matched nodes
+  -p, --preserve          Preserve text when deleting
   -r, --range             Execute a range query
   -m, --multiple          Include multiple ranges
   -h, --help              Display help and exit
