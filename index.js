@@ -34,7 +34,7 @@ function range(start, end) {
 
     if(!begin.selectors
       || !finish.selectors
-      ||(begin.selectors.length !== finish.selectors.length)) {
+      || (begin.selectors.length !== finish.selectors.length)) {
       throw new Error(
         'invalid range query \'' + start + '\' to \'' + end + '\''); 
     }
@@ -48,17 +48,20 @@ function range(start, end) {
  *
  *  @function slice
  *  @param {Object} source compiled range query.
+ *  @param {Object} [opts] range query options.
  *
  *  @returns Range query execution object.
  */
-function slice(source) {
+function slice(source, opts) {
+  opts = opts || {};
   var Range = require('./lib/range')
     , start = 
       source.start && source.start.selectors ? source.start.selectors : []
     , end =
         source.end && source.end.selectors ? source.end.selectors : null;
-
-  return new Range({start: start, end: end});
+  opts.start = start;
+  opts.end = end;
+  return new Range(opts);
 }
 
 /**
@@ -75,10 +78,11 @@ function slice(source) {
  *  @function query
  *  @param {Array|Object|String} markdown input data.
  *  @param {String|Object} source input selector.
+ *  @param {Object} [opts] query options.
  *  
  *  @returns Array list of matched nodes.
  */
-function query(markdown, source) {
+function query(markdown, source, opts) {
   var ast = require('mkast')
     , doc
     , child
@@ -105,7 +109,7 @@ function query(markdown, source) {
 
   // treat as range query
   if(isRange) {
-    var range = slice(source); 
+    var range = slice(source, opts); 
     for(i = 0;i < nodes.length;i++) {
       range.write(nodes[i], i, i === (nodes.length - 1)); 
     }
