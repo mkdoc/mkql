@@ -44,6 +44,24 @@ function range(start, end) {
 }
 
 /**
+ *  Execute a range query on the input nodes.
+ *
+ *  @function slice
+ *  @param {Object} source compiled range query.
+ *
+ *  @returns Range query execution object.
+ */
+function slice(source) {
+  var Range = require('./lib/range')
+    , start = 
+      source.start && source.start.selectors ? source.start.selectors : []
+    , end =
+        source.end && source.end.selectors ? source.end.selectors : null;
+
+  return new Range({start: start, end: end});
+}
+
+/**
  *  Query a markdown document tree with a source selector.
  *
  *  If the markdown parameter is a string it is parsed into a document tree.
@@ -51,9 +69,12 @@ function range(start, end) {
  *  If the given source selector is a string it is compiled otherwise it should 
  *  be a previously compiled result tree.
  *
+ *  If the source selector appears to be a range query the `slice` function is 
+ *  called with the range query.
+ *
  *  @function query
  *  @param {Array|Object|String} markdown input data.
- *  @param {String} source input selector.
+ *  @param {String|Object} source input selector.
  *  
  *  @returns Array list of matched nodes.
  */
@@ -63,7 +84,8 @@ function query(markdown, source) {
     , child
     , i
     , nodes = []
-    , list = [];
+    , list = []
+    , isRange = source && source.start;
 
   if(typeof source === 'string') {
     source = compile(source); 
@@ -81,10 +103,20 @@ function query(markdown, source) {
     nodes = [markdown]; 
   }
 
-  // iterate over 
-  if(source.selectors) {
-    for(i = 0;i < source.selectors.length;i++) {
-      source.selectors[i].exec(nodes, list);
+  // treat as range query
+  if(isRange) {
+    var range = slice(source); 
+    for(i = 0;i < nodes.length;i++) {
+      range.write(nodes[i], i, i === (nodes.length - 1)); 
+    }
+    //console.error('' + range.end)
+    list = range.end();
+  }else{
+    // iterate over 
+    if(source.selectors) {
+      for(i = 0;i < source.selectors.length;i++) {
+        source.selectors[i].exec(nodes, list);
+      }
     }
   }
 

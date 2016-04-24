@@ -9,8 +9,6 @@ describe('compiler:', function() {
     var selector = 'ul,\n\nol li'
       , result = compile(selector);
 
-    //console.error(result);
-
     expect(result).to.be.an('object');
     expect(result.selectors).to.be.an('array')
       .to.have.length(2);
@@ -28,8 +26,6 @@ describe('compiler:', function() {
     // NOTE: the newline in the descendant selector part
     var selector = 'ul,\n\nol\nli'
       , result = compile(selector);
-
-    //console.error(result);
 
     expect(result).to.be.an('object');
     expect(result.selectors).to.be.an('array')
