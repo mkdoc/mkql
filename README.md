@@ -43,6 +43,8 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 - [Help](#help)
 - [API](#api)
   - [compile](#compile)
+  - [range](#range)
+  - [slice](#slice)
   - [query](#query)
   - [ql](#ql)
     - [Options](#options)
@@ -337,10 +339,40 @@ Returns Object result tree.
 
 * `source` String input selector.
 
+### range
+
+```javascript
+range(start[, end])
+```
+
+Compile a range query.
+
+When an `end` selector is given it must have the same number of
+selectors in the list as the `start` selector.
+
+If the `end` selector is not given the range will end when the `start`
+selector matches again or the end of file is reached.
+
+* `start` String selector to start the range match.
+* `end` String selector to end the range match.
+
+### slice
+
+```javascript
+slice(source[, opts])
+```
+
+Execute a range query on the input nodes.
+
+Returns Range query execution object.
+
+* `source` Object compiled range query.
+* `opts` Object range query options.
+
 ### query
 
 ```javascript
-query(markdown, source)
+query(markdown, source[, opts])
 ```
 
 Query a markdown document tree with a source selector.
@@ -350,10 +382,14 @@ If the markdown parameter is a string it is parsed into a document tree.
 If the given source selector is a string it is compiled otherwise it should
 be a previously compiled result tree.
 
+If the source selector appears to be a range query the `slice` function is
+called with the range query.
+
 Returns Array list of matched nodes.
 
 * `markdown` Array|Object|String input data.
-* `source` String input selector.
+* `source` String|Object input selector.
+* `opts` Object query options.
 
 ### ql
 
@@ -379,7 +415,7 @@ MIT
 
 ---
 
-Created by [mkdoc](https://github.com/mkdoc/mkdoc) on April 23, 2016
+Created by [mkdoc](https://github.com/mkdoc/mkdoc) on April 24, 2016
 
 [source-highlight]: https://www.gnu.org/software/src-highlite/source-highlight.html
 [mkdoc]: https://github.com/mkdoc/mkdoc
