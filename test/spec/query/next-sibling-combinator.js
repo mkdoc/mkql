@@ -43,4 +43,15 @@ describe('query:', function() {
     }
   );
 
+  it('should match with next sibling combinator (+ ul)',
+    function(done) {
+      var selector = '+ ul'
+        , result = query('Para\n\n* List item\n\n', selector);
+
+      expect(result.length).to.eql(1);
+      expect(result[0].type).to.eql(Node.LIST);
+      done();
+    }
+  );
+
 });
